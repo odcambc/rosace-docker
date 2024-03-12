@@ -16,7 +16,7 @@ Then connect to the Rstudio server in the docker image: http://localhost:8787/
 
 ### Dependencies
 
-Make sure there is a working (Docker)[https://www.docker.com] installation on your system.
+Make sure there is a working [Docker](https://www.docker.com) installation on your system.
 
 We provide two versions of the rosace-docker image on Docker Hub, both of which are built from
 the Dockerfiles in this repository using [rocker](https://github.com/rocker-org/rocker) project
