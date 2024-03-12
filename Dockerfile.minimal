@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:4.3.2
+FROM rocker/r-ver:4.3.3
 
 WORKDIR /home/rosace
 
@@ -11,10 +11,14 @@ RUN install2.r --error \
 
 RUN R -e "library(cmdstanr); install_cmdstan(cores = 4)"
 
+RUN install2.r --error \
+    --repos getOption \
+    remotes \
+    && rm -rf /tmp/downloaded_packages
+
+RUN apt-get update && apt-get install -y git cmake && apt-get clean
+
 # Install the release version of rosace (tag 0d469506a02057f6402d6a0b9d075cd5eaa1a177)
 RUN installGithub.r --deps TRUE \
     pimentellab/rosace@0d469506a02057f6402d6a0b9d075cd5eaa1a177 \
     && rm -rf /tmp/downloaded_packages
-
-ENTRYPOINT /usr/local/bin/rserver \
-    --www-port=8787 --server-daemonize=0
