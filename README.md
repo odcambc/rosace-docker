@@ -30,17 +30,16 @@ This is the easiest way to get started with rosace-docker.
 #### `rosace-docker`
 ```bash
 docker pull cbmacdo/rosace-docker:latest
-docker run --rm -p 8787:8787 -e PASSWORD=password rosace-docker
+docker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 -v ./data:/home/rosace/data cbmacdo/rosace-docker
 ```
 
 #### `rosace-docker-minimal`
 ```bash
 docker pull cbmacdo/rosace-docker-minimal:latest
-docker run -d rosace-docker-minimal
+docker run --rm -ti -v ./data:/home/rosace/data cbmacdo/rosace-docker-minimal
 ```
 
 ### Build images from Dockerfiles
-
 Download the Dockerfiles from this repository and build the image with the following commands:
 
 #### `rosace-docker`
@@ -55,23 +54,25 @@ docker build -f Dockerfile.minimal -t rosace-docker-minimal .
 
 ## Usage
 #### `rosace-docker`
-Start the Docker container with the following command:
+Start the Docker container with the following command (replace the password with your own):
 
 ```bash
-docker run --rm -p 8787:8787 -e PASSWORD=password rosace-docker
+docker run --rm -ti -e PASSWORD=yourpassword -p 8787:8787 -v ./data:/home/rosace/data cbmacdo/rosace-docker
 ```
 
-Then connect to the Rstudio server in the docker image using
-the password you chose above: http://localhost:8787/
+This will make the `data` folder in the current working directory available to the Rstudio server in the container at `/home/rosace/data`.
+Change this to whatever directory you would like to mount instead. You can change which port the Rstudio server is
+available on by changing the `-p` flag, in case 8787 is already in use on your system.
 
-This will also mount the current working directory to the `/home/rosace/data` directory in the container.
+Then connect to the Rstudio server in the docker image using the username "rstudio" and
+the password you chose above: http://localhost:8787/
 
 #### `rosace-docker-minimal`
 ```bash
-docker run -d rosace-docker-minimal
+docker run --rm -ti -v ./data:/home/rosace/data cbmacdo/rosace-docker-minimal
 ```
-
-This will also mount the current working directory to the `/home/rosace/data` directory in the container.
+This will make the `data` folder in the current working directory available to the Rstudio server in the container at `/home/rosace/data`.
+Change this to whatever directory you would like to mount instead.
 
 ## Citations
 Rosace is described in the following publication:

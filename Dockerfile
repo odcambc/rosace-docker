@@ -15,6 +15,3 @@ RUN R -e "library(cmdstanr); install_cmdstan(cores = 4)"
 RUN installGithub.r --deps TRUE \
     pimentellab/rosace@0d469506a02057f6402d6a0b9d075cd5eaa1a177 \
     && rm -rf /tmp/downloaded_packages
-
-ENTRYPOINT /usr/local/bin/rserver \
-    --www-port=8787 --server-daemonize=0
