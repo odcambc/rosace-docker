@@ -11,7 +11,7 @@ RUN install2.r --error \
 
 RUN R -e "library(cmdstanr); install_cmdstan(cores = 4)"
 
-# Install the release version of rosace (tag 0d469506a02057f6402d6a0b9d075cd5eaa1a177)
+# Install the release version of rosace (tag a6a95a671818f05ff3a2c0fea800fe370bdae565)
 RUN installGithub.r --deps TRUE \
-    pimentellab/rosace@0d469506a02057f6402d6a0b9d075cd5eaa1a177 \
+    pimentellab/rosace@a6a95a671818f05ff3a2c0fea800fe370bdae565 \
     && rm -rf /tmp/downloaded_packages
