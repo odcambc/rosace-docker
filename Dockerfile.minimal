@@ -18,7 +18,7 @@ RUN install2.r --error \
 
 RUN apt-get update && apt-get install -y git cmake && apt-get clean
 
-# Install the release version of rosace (tag a6a95a671818f05ff3a2c0fea800fe370bdae565)
+# Install the release version of rosace (tag ff8811249673ded685ae03b3a03cb4157261bf25)
 RUN installGithub.r --deps TRUE \
-    pimentellab/rosace@a6a95a671818f05ff3a2c0fea800fe370bdae565 \
+    pimentellab/rosace@ff8811249673ded685ae03b3a03cb4157261bf25 \
     && rm -rf /tmp/downloaded_packages
